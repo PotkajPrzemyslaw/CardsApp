@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Database
 builder.Services.AddDbContext<AppDbContext>(n =>
 {
     n.UseSqlServer(builder.Configuration.GetConnectionString(nameof(AppDbContext)), options =>
@@ -22,10 +21,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Services
 builder.Services.AddTransient<ICardsService, CardsService>();
 
-// Repositories
 builder.Services.AddTransient<ICardsRepository, CardsRepository>();
 
 var app = builder.Build();

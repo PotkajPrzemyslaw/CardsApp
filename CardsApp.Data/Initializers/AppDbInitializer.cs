@@ -6,14 +6,11 @@ namespace CardsApp.Data.Initializers;
 public static class AppDbInitializer
 {
     public static async Task SeedAsync(AppDbContext db)
-    {
-        // Ta metoda sprawdza czy baza jest utworzona i jesli nie to ja utworzyc - przezornie ;)
+    {        
         await db.Database.EnsureCreatedAsync();
 
-        // Dodajemy testowe obiekty
         await SeedData(db);
 
-        // Zapisujemy zmiany
         await db.SaveChangesAsync();
     }
 
